@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.*;
 
 public class CharacterLinePosAndOccurences {
-    public Map<Integer, String> getLines(String path) {
-        Map<Integer, String> lines = new HashMap<>();
+    public List<LinesResult> getLines(String path) {
+        List<LinesResult> lines =new ArrayList<>();
         try {
             File f1 = new File(path);
             if (!f1.exists()) {
@@ -15,7 +15,7 @@ public class CharacterLinePosAndOccurences {
             String line;
             int linenor = 1;
             while ((line = bf.readLine()) != null) {
-                lines.put(linenor++, line);
+                lines.add(new LinesResult(linenor++, line));
             }
         } catch (FileNotFoundException fe) {
             System.out.println(fe.getMessage());
@@ -25,33 +25,31 @@ public class CharacterLinePosAndOccurences {
         return lines;
     }
 
-    public Map<Integer, List<Integer>> foundAtLineAndPos(String path, char ch) {
-        CharacterLinePosAndOccurences ob=new CharacterLinePosAndOccurences();
-        Map<Integer, String> lines = ob.getLines(path);
-        Map<Integer, List<Integer>> found = new HashMap<>();
-        for (Map.Entry < Integer,String > m :lines.entrySet()){
+    public List<CharLinePos> foundAtLineAndPos(String path, char ch) {
+        List<LinesResult> lines = getLines(path);
+        List<CharLinePos> found = new ArrayList<>();
+        for (int i=0;i<lines.size();i++) {
             List<Integer> li = new ArrayList<>();
-            String st=m.getValue();
-            for (int i = 0; i < st.length(); i++) {
-                if (st.charAt(i) == ch) {
-                    li.add(i);
+            String st = lines.get(i).getLine();
+            for (int j = 0; j < st.length(); j++) {
+                if (st.charAt(j) == ch) {
+                    li.add(j);
                 }
             }
             if (!li.isEmpty()) {
-                found.put(m.getKey(), li);
+                found.add(new CharLinePos(lines.get(i).getLinenor(), li));
             }
         }
         return found;
     }
 
-    public int occured(String path, char ch) {
-        CharacterLinePosAndOccurences ob = new CharacterLinePosAndOccurences();
-        Map<Integer, List<Integer>> found = ob.foundAtLineAndPos(path, ch);
+    public CharOccured occured(String path, char ch) {
+        List<CharLinePos> found = foundAtLineAndPos(path, ch);
         int occured = 0;
-        for (Map.Entry<Integer, List<Integer>> m : found.entrySet()) {
-            occured += m.getValue().size();
+        for (int i = 0; i < found.size(); i++) {
+            occured += found.get(i).getPos().size();
         }
-        return occured;
+        return new CharOccured(occured);
     }
 }
 
