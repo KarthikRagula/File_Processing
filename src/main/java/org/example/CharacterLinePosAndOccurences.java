@@ -16,10 +16,10 @@ public class CharacterLinePosAndOccurences {
         try {
             BufferedReader bf = new BufferedReader(new FileReader(path));
             String line;
-            int linenor = 0;
+            int linenor = 1;
             int occured = 0;
             while ((line = bf.readLine()) != null) {
-                System.out.println(line);
+                System.out.println(linenor +" "+ line);
                 for (int i = 0; i < line.length(); i++) {
                     if (line.charAt(i) == ch) {
                         occured++;
@@ -28,8 +28,11 @@ public class CharacterLinePosAndOccurences {
                 }
                 linenor++;
             }
-            System.out.println(ch + " occured " + occured + " times");
-
+            if (occured > 0) {
+                System.out.println(ch + " occurred a total of " + occured + " times in the file.");
+            } else {
+                System.out.println("The character '" + ch + "' was not found in the file.");
+            }
         }
         catch (FileNotFoundException fe){
             System.out.println("File not found");
