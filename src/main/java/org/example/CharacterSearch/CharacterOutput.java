@@ -1,23 +1,23 @@
-package org.example;
+package org.example.CharacterSearch;
 
 import java.util.List;
 
-public class Result {
+public class CharacterOutput {
     private int linenor;
     private String line;
     private List<Integer> pos;
     private int occured;
 
-    public Result(int occured) {
+    public CharacterOutput(int occured) {
         this.occured = occured;
     }
 
-    public Result(int linenor, List<Integer> pos) {
+    public CharacterOutput(int linenor, List<Integer> pos) {
         this.linenor = linenor;
         this.pos = pos;
     }
 
-    public Result(int linenor, String line) {
+    public CharacterOutput(int linenor, String line) {
         this.linenor = linenor;
         this.line = line;
     }

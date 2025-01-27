@@ -1,11 +1,11 @@
-package org.example;
+package org.example.CharacterSearch;
 
 import java.io.*;
 import java.util.*;
 
 public class CharacterLinePosAndOccurences {
-    public List<Result> getLines(Input in) {
-        List<Result> lines =new ArrayList<>();
+    public List<CharacterOutput> getLines(CharacterInput in) {
+        List<CharacterOutput> lines =new ArrayList<>();
         try {
             File f1 = new File(in.getPath());
             if (!f1.exists()) {
@@ -15,7 +15,7 @@ public class CharacterLinePosAndOccurences {
             String line;
             int linenor = 1;
             while ((line = bf.readLine()) != null) {
-                lines.add(new Result(linenor++, line));
+                lines.add(new CharacterOutput(linenor++, line));
             }
         } catch (FileNotFoundException fe) {
             System.out.println(fe.getMessage());
@@ -25,9 +25,9 @@ public class CharacterLinePosAndOccurences {
         return lines;
     }
 
-    public List<Result> foundAtLineAndPos(Input in) {
-        List<Result> lines = getLines(in);
-        List<Result> found = new ArrayList<>();
+    public List<CharacterOutput> foundAtLineAndPos(CharacterInput in) {
+        List<CharacterOutput> lines = getLines(in);
+        List<CharacterOutput> found = new ArrayList<>();
         for (int i=0;i<lines.size();i++) {
             List<Integer> li = new ArrayList<>();
             String st = lines.get(i).getLine();
@@ -37,19 +37,19 @@ public class CharacterLinePosAndOccurences {
                 }
             }
             if (!li.isEmpty()) {
-                found.add(new Result(lines.get(i).getLinenor(), li));
+                found.add(new CharacterOutput(lines.get(i).getLinenor(), li));
             }
         }
         return found;
     }
 
-    public Result occured(Input in) {
-        List<Result> found = foundAtLineAndPos(in);
+    public CharacterOutput occured(CharacterInput in) {
+        List<CharacterOutput> found = foundAtLineAndPos(in);
         int occured = 0;
         for (int i = 0; i < found.size(); i++) {
             occured += found.get(i).getPos().size();
         }
-        return new Result(occured);
+        return new CharacterOutput(occured);
     }
 }
 

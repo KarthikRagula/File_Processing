@@ -1,13 +1,13 @@
-package org.example;
+package org.example.CharacterSearch;
 
-public class Input {
+public class CharacterInput {
     private String path;
     private char ch;
 
-    public Input(String path){
+    public CharacterInput(String path){
         this.path=path;
     }
-    public Input(String path, char ch){
+    public CharacterInput(String path, char ch){
         this.path=path;
         this.ch=ch;
     }
