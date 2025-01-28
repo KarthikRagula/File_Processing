@@ -13,7 +13,7 @@ class CharacterLinePosAndOccurencesTest {
 
     @Test
     void getLines() {
-        List<CharacterOutput> obj=ob.getLines(new CharacterInput("sample.txt"));
+        List<CharacterOutput> obj=ob.getLines(new CharacterInput("sample1.txt"));
         for(int i=0;i<obj.size();i++){
             System.out.println(obj.get(i).getLinenor()+" "+obj.get(i).getLine());
         }
@@ -21,7 +21,7 @@ class CharacterLinePosAndOccurencesTest {
 
     @Test
     void foundAtLineAndPos() {
-        List<CharacterOutput> obj=ob.foundAtLineAndPos(new CharacterInput("sample.txt", 'o'));
+        List<CharacterOutput> obj=ob.foundAtLineAndPos(new CharacterInput("sample1.txt", 'o'));
         for(int i=0;i<obj.size();i++){
             System.out.println(obj.get(i).getLinenor()+" "+obj.get(i).getPos());
         }
@@ -29,6 +29,6 @@ class CharacterLinePosAndOccurencesTest {
 
     @Test
     void occured() {
-        System.out.println(ob.occured(new CharacterInput("sample.txt", 'o')).getOccured());
+        System.out.println(ob.occured(new CharacterInput("sample1.txt", 'o')).getOccured());
     }
 }

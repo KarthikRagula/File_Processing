@@ -4,10 +4,6 @@ public class WordInput {
     private String path;
     private String word;
 
-    public WordInput(String path){
-        this.path=path;
-    }
-
     public WordInput(String path, String word){
         this.path=path;
         this.word=word;
