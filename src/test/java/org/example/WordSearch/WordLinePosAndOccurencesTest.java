@@ -3,6 +3,7 @@ package org.example.WordSearch;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 class WordLinePosAndOccurencesTest {
 
@@ -18,10 +19,25 @@ class WordLinePosAndOccurencesTest {
     }
 
     @Test
-    void getLines() {
-        List<WordOutput> list = ob.getLinesAndPostionsOfWord(new WordInput("/home/karthikr_700073/Downloads/Karthik/temp.txt", "m"));
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).getLine() + " " + list.get(i).getLineNumber() + " " + list.get(i).getPos());
+    void getLinesAndPostionsOfWord() {
+        WordOutput output = ob.getLinesAndPostionsOfWord(new WordInput("/home/karthikr_700073/Downloads/Karthik", "the"));
+        Map<String,List<WordOutput>> finalOutput=output.getFinalOutput();
+        for(Map.Entry<String,List<WordOutput>> map:finalOutput.entrySet()){
+            System.out.println(map.getKey());
+            List<WordOutput> list=map.getValue();
+            for(int i=0;i< list.size();i++){
+                System.out.println(list.get(i).getLine());
+                System.out.println(list.get(i).getLineNumber()+" "+list.get(i).getPos());
+            }
+            System.out.println();
+        }
+    }
+
+    @Test
+    void getOccurrences(){
+        List<WordOutput> list=ob.getOccurrences(new WordInput("/home/karthikr_700073/Downloads/Karthik","the"));
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i).getAbsolutePath()+" "+list.get(i).getOccurred());
         }
     }
 }

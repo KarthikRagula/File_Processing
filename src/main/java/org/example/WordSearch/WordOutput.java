@@ -1,19 +1,29 @@
 package org.example.WordSearch;
 
 import java.util.List;
+import java.util.Map;
 
 public class WordOutput {
-    private int occured;
+    private int occurred;
     private int lineNumber;
     private List<Integer> pos;
     private String line;
     private String absolutePath;
-    private List<String> listOfFiles;
     private List<WordOutput> lines;
+    private Map<String,List<WordOutput>> finalOutput;
+
+    public WordOutput(Map<String,List<WordOutput>> finalOutput){
+        this.finalOutput=finalOutput;
+    }
 
     public WordOutput(int lineNumber, String line) {
         this.lineNumber = lineNumber;
         this.line = line;
+    }
+
+    public WordOutput (String absolutePath, int occurred){
+        this.absolutePath=absolutePath;
+        this.occurred =occurred;
     }
 
     public WordOutput(String line, int lineNumber, List<Integer> pos) {
@@ -23,71 +33,39 @@ public class WordOutput {
     }
 
     public WordOutput(int occured) {
-        this.occured = occured;
-    }
-
-    public WordOutput(List<String> listOfFiles){
-        this.listOfFiles=listOfFiles;
+        this.occurred = occured;
     }
 
     public WordOutput(String absolutePath, List<WordOutput> lines) {
-        this.absolutePath =absolutePath;
-        this.lines=lines;
-    }
-
-    public List<WordOutput> getLines() {
-        return lines;
-    }
-
-    public void setLines(List<WordOutput> lines) {
+        this.absolutePath = absolutePath;
         this.lines = lines;
     }
 
-    public String getAbsolutePath() {
-        return absolutePath;
-    }
-
-    public void setAbsolutePath(String absolutePath) {
-        this.absolutePath = absolutePath;
-    }
-
-    public String getLine() {
-        return line;
-    }
-
-    public void setLine(String line) {
-        this.line = line;
-    }
-
-    public int getOccured() {
-        return occured;
-    }
-
-    public void setOccured(int occured) {
-        this.occured = occured;
+    public int getOccurred() {
+        return occurred;
     }
 
     public int getLineNumber() {
         return lineNumber;
     }
 
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
-    }
-
     public List<Integer> getPos() {
         return pos;
     }
 
-    public void setPos(List<Integer> pos) {
-        this.pos = pos;
+    public String getLine() {
+        return line;
     }
 
-    public List<String> getListOfFiles() {
-        return listOfFiles;
+    public String getAbsolutePath() {
+        return absolutePath;
     }
 
-    public void setListOfFiles(List<String> listOfFiles) {
-        this.listOfFiles = listOfFiles;
+    public List<WordOutput> getLines() {
+        return lines;
+    }
+
+    public Map<String, List<WordOutput>> getFinalOutput() {
+        return finalOutput;
     }
 }
