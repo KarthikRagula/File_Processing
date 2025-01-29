@@ -35,9 +35,12 @@ class WordLinePosAndOccurencesTest {
 
     @Test
     void getOccurrences(){
+        int times=0;
         List<WordOutput> list=ob.getOccurrences(new WordInput("/home/karthikr_700073/Downloads/Karthik","the"));
         for(int i=0;i<list.size();i++){
+            times+=list.get(i).getOccurred();
             System.out.println(list.get(i).getAbsolutePath()+" "+list.get(i).getOccurred());
         }
+        System.out.println("Total Occurred times :"+times);
     }
 }

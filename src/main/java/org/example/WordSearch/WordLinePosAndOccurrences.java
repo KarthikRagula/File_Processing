@@ -9,7 +9,7 @@ import java.util.Map;
 public class WordLinePosAndOccurrences {
 
     //input = file path
-    public List<WordOutput> getLines(WordInput in) {
+    private List<WordOutput> getLines(WordInput in) {
         List<WordOutput> lines = new ArrayList<>();
         try {
             File f0 = new File(in.getPath());
