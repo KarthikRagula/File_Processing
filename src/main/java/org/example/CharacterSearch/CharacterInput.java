@@ -4,12 +4,13 @@ public class CharacterInput {
     private String path;
     private char ch;
 
-    public CharacterInput(String path){
-        this.path=path;
+    public CharacterInput(String path) {
+        this.path = path;
     }
-    public CharacterInput(String path, char ch){
-        this.path=path;
-        this.ch=ch;
+
+    public CharacterInput(String path, char ch) {
+        this.path = path;
+        this.ch = ch;
     }
 
     public String getPath() {

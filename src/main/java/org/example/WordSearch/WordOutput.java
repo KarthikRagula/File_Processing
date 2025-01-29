@@ -10,10 +10,10 @@ public class WordOutput {
     private String line;
     private String absolutePath;
     private List<WordOutput> lines;
-    private Map<String,List<WordOutput>> finalOutput;
+    private Map<String, List<WordOutput>> finalOutput;
 
-    public WordOutput(Map<String,List<WordOutput>> finalOutput){
-        this.finalOutput=finalOutput;
+    public WordOutput(Map<String, List<WordOutput>> finalOutput) {
+        this.finalOutput = finalOutput;
     }
 
     public WordOutput(int lineNumber, String line) {
@@ -21,13 +21,13 @@ public class WordOutput {
         this.line = line;
     }
 
-    public WordOutput (String absolutePath, int occurred){
-        this.absolutePath=absolutePath;
-        this.occurred =occurred;
+    public WordOutput(String absolutePath, int occurred) {
+        this.absolutePath = absolutePath;
+        this.occurred = occurred;
     }
 
     public WordOutput(String line, int lineNumber, List<Integer> pos) {
-        this.line=line;
+        this.line = line;
         this.lineNumber = lineNumber;
         this.pos = pos;
     }

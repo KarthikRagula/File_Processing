@@ -13,17 +13,17 @@ class CharacterLinePosAndOccurencesTest {
 
     @Test
     void getLines() {
-        List<CharacterOutput> obj=ob.getLines(new CharacterInput("sample1.txt"));
-        for(int i=0;i<obj.size();i++){
-            System.out.println(obj.get(i).getLinenor()+" "+obj.get(i).getLine());
+        List<CharacterOutput> obj = ob.getLines(new CharacterInput("sample1.txt"));
+        for (int i = 0; i < obj.size(); i++) {
+            System.out.println(obj.get(i).getLinenor() + " " + obj.get(i).getLine());
         }
     }
 
     @Test
     void foundAtLineAndPos() {
-        List<CharacterOutput> obj=ob.foundAtLineAndPos(new CharacterInput("sample1.txt", 'o'));
-        for(int i=0;i<obj.size();i++){
-            System.out.println(obj.get(i).getLinenor()+" "+obj.get(i).getPos());
+        List<CharacterOutput> obj = ob.foundAtLineAndPos(new CharacterInput("sample1.txt", 'o'));
+        for (int i = 0; i < obj.size(); i++) {
+            System.out.println(obj.get(i).getLinenor() + " " + obj.get(i).getPos());
         }
     }
 

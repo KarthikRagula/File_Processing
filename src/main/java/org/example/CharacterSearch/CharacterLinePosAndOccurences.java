@@ -5,7 +5,7 @@ import java.util.*;
 
 public class CharacterLinePosAndOccurences {
     public List<CharacterOutput> getLines(CharacterInput in) {
-        List<CharacterOutput> lines =new ArrayList<>();
+        List<CharacterOutput> lines = new ArrayList<>();
         try {
             File f1 = new File(in.getPath());
             if (!f1.exists()) {
@@ -28,7 +28,7 @@ public class CharacterLinePosAndOccurences {
     public List<CharacterOutput> foundAtLineAndPos(CharacterInput in) {
         List<CharacterOutput> lines = getLines(in);
         List<CharacterOutput> found = new ArrayList<>();
-        for (int i=0;i<lines.size();i++) {
+        for (int i = 0; i < lines.size(); i++) {
             List<Integer> li = new ArrayList<>();
             String st = lines.get(i).getLine();
             for (int j = 0; j < st.length(); j++) {

@@ -61,7 +61,7 @@ public class WordLinePosAndOccurrences {
     //input = path and word
     public WordOutput getLinesAndPostionsOfWord(WordInput in) {
         List<WordOutput> listOfFiles = getListOfFiles(in);
-        Map<String,List<WordOutput>> finalOutput=new HashMap<>();
+        Map<String, List<WordOutput>> finalOutput = new HashMap<>();
         for (int i = 0; i < listOfFiles.size(); i++) {
             List<WordOutput> lines = listOfFiles.get(i).getLines();
             List<WordOutput> lineNumberAndPos = new ArrayList<>();
@@ -77,7 +77,7 @@ public class WordLinePosAndOccurrences {
                     lineNumberAndPos.add(new WordOutput(st, lines.get(j).getLineNumber(), li));
                 }
             }
-            finalOutput.put(listOfFiles.get(i).getAbsolutePath(),lineNumberAndPos);
+            finalOutput.put(listOfFiles.get(i).getAbsolutePath(), lineNumberAndPos);
         }
         //output =map of(string, list of (line, linenumber and list of (postions)))
         return new WordOutput(finalOutput);
@@ -100,14 +100,14 @@ public class WordLinePosAndOccurrences {
     //input == path and word
     public List<WordOutput> getOccurrences(WordInput in) {
         WordOutput output = getLinesAndPostionsOfWord(in);
-        Map<String,List<WordOutput>> finalOutput=output.getFinalOutput();
-        List<WordOutput> occurredList=new ArrayList<>();
+        Map<String, List<WordOutput>> finalOutput = output.getFinalOutput();
+        List<WordOutput> occurredList = new ArrayList<>();
         int occurred = 0;
-        for(Map.Entry<String,List<WordOutput>> map:finalOutput.entrySet()){
-            List<WordOutput> list=map.getValue();
-            occurred =0;
-            for(int i=0;i< list.size();i++){
-                occurred +=list.get(i).getPos().size();
+        for (Map.Entry<String, List<WordOutput>> map : finalOutput.entrySet()) {
+            List<WordOutput> list = map.getValue();
+            occurred = 0;
+            for (int i = 0; i < list.size(); i++) {
+                occurred += list.get(i).getPos().size();
             }
             occurredList.add(new WordOutput(map.getKey(), occurred));
         }
